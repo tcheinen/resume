@@ -1,0 +1,244 @@
+\documentclass[fontsize=11pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[svgnames]{xcolor}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{url}
+\usepackage{lmodern} % Allow arbitrary font sizes
+\usepackage{textcomp}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
+\usepackage{fontawesome}
+
+\makeatletter
+\def\url@modernstyle{
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{}}}
+\makeatother
+\urlstyle{modern} %% And use the newly defined style.
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{highlight}{RGB}{0, 51, 102} % highlight is primarily used for headers and similar -- should be a darkish color
+\definecolor{foreground}{RGB}{51, 51, 51} % foreground is the primary text color.  Should be readable on the background
+
+\color{foreground}
+
+%%% Custom Sectioning (titlesec)
+% \usepackage{titlesec}
+% \titleformat{\section}{\Large\bfseries\sffamily}{}{0 em}
+%   {%
+%     \begingroup
+%       \color{highlight}%
+%       \titleline{\leaders\hrule height 2pt \hfill\kern 0 pt\relax}%
+%     \endgroup
+%     \nobreak
+%     \vspace{-1 em}%
+%     \nobreak
+%   }
+% \titlespacing\section{0pt}{0pt}{0pt}
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{                 % Change font of \section command
+  \usefont{OT1}{phv}{b}{n}%   % bch-b-n: CharterBT-Bold font
+  \sectionrule{0pt}{0pt}{-5pt}{2pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}      % Box to align text
+% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+    \Huge \usefont{OT1}{phv}{b}{n} \hfill \textcolor{highlight}{#1}
+    \par \normalsize \normalfont}
+    
+\newcommand{\NewPart}[1]{
+    \section*{\textcolor{highlight}{\uppercase{#1}}}
+}
+
+\newcommand{\duration}[1]{
+      \color{Black} \ #1 
+
+}
+
+\newcommand{\SkillsEntry}[2]{
+    \noindent\hangafter=0
+    \textit{#1}
+    \hspace{1.5em} #2 \par
+}
+
+\newcommand{\AwardsEntry}[2]{
+    \noindent\hangindent=2em\hangafter=0
+    \parbox{\spacebox}{
+    \textit{#1}}
+    \duration{#2}
+}
+
+\newcommand{\EducationEntry}[4]{
+    \noindent \textbf{#1} \hfill
+    \duration{#3}
+    \noindent \textit{#2} 
+     #4
+}
+
+\newcommand{\WorkEntry}[4]{
+    \noindent \textbf{#1} \hfill      % Jobname
+    \duration{#2}
+    \par \noindent \textit{#3} % Company
+    \par \noindent \small #4 % Description
+    \normalsize \par
+}
+
+\newcommand{\VolunteerEntry}[4]{
+    \noindent \textbf{#1}, % Position name
+    \textit{#3} \hfill % Organization with
+    \duration{#2}
+    \vspace{1pt}
+    \par \noindent \small #4 % Description
+    \vspace{3mm}
+    \normalsize \par
+}
+
+\newcommand{\ProjectEntry}[4]{
+    \noindent \textbf{#1} \noindent \textit{#3} \hfill {#2} \par
+    \noindent \small #4 % Description
+    \normalsize \par
+}
+
+\newcommand{\AwardEntry}[4]{
+    \noindent \textbf{#1} \noindent \textit{#3} \hfill {#2} \par
+    \noindent \small #4 % Description
+    \normalsize \par
+}
+
+\newcommand{\SplitSegment}[2]{
+    \begin{multicols}{2}
+        \noindent
+        \begin{minipage}[t]{1\linewidth}
+            #1
+        \end{minipage}
+        
+        \noindent
+        \begin{minipage}[t]{1\linewidth}
+            #2
+        \end{minipage}
+    \end{multicols}
+}
+\begin{document}
+
+
+
+\MyName{Teddy Heinen}
+{\small \hfill 
+\href{mailto:teddy@heinen.dev}{teddy@heinen.dev} | 9034879766 | \href{https://teddyheinen.com}{teddyheinen.com} | GitHub: \href{https://github.com/tcheinen}{tcheinen}}
+
+%%% Work experience
+%%% ------------------------------------------------------------
+
+\textcolor{highlight}{\NewPart{Experience}{}}
+\WorkEntry
+{Full Stack Developer (Intern)}
+{Summer 2020}
+{40Geo, Houston, TX}
+{Sole software developer for FirstWatch, a reporting software for marine life monitoring to help comply with ocean noise regulations, utilized JavaScript, ElasticSearch, Vue, and Git}
+\WorkEntry
+{TAMUctf Developer}
+{Fall 2019 - Present}
+{Texas A\&M, College Station, TX}
+{Designing and creating challenges on various cybersecurity topics such as binary exploitation, reverse engineering, and web exploitation for our university CTF competition and the regional championships for SkillsUSA Cybersecurity}
+\WorkEntry
+{Teaching Assistant}
+{Fall 2019 - Present}
+{Texas A\&M, College Station, TX}
+{Lead CS labs, grade assignments (developed software to automate grading), assist with homework and exam design, and maintain office hours}
+\WorkEntry
+{Software Engineering Intern}
+{ Summer 2018 \& 2019}
+{Trintech, Dallas, TX}
+{Worked on frontend with Angular/Typescript, backend with Java EE and containerized software allowing developers to test locally}
+
+
+
+%%% Education
+%%% ------------------------------------------------------------
+\textcolor{highlight}{\NewPart{Education}{}}
+\EducationEntry
+{Bachelor of Science - Computer Science}
+{Texas A\&M University}
+{Fall 2017 - Fall 2021}
+{
+\par• Minor - Cybersecurity
+\par• Major GPA: 3.9 ; Overall GPA: 3.67
+}
+
+
+
+\vspace{-10mm}
+\SplitSegment
+{
+
+    \textcolor{highlight}{\NewPart{Volunteering}{}}
+    \VolunteerEntry
+    {Instructor}
+    {May 2020 - June 2020}
+    {ShiP.py}
+    {Helped design and teach an introductory class on Python targeted at people with minimal programming experience so that they could learn a new skill during the shelter-in-place order. We had over 100 people sign up, primarily from students and industry professionals in non computer science fields. }
+    \VolunteerEntry
+    {CTF Team Lead}
+    {May 2020 - Present}
+    {TAMU Cybersecurity Club}
+    {}
+}
+{
+    \textcolor{highlight}{\NewPart{Projects}{}}
+    \ProjectEntry{\href{https://github.com/tcheinen/rusty_chip8}{Rusty CHIP8}}{}
+    {Rust}
+    {Emulator for the CHIP8 VM}
+    
+    \ProjectEntry{\href{https://github.com/tcheinen/sky-menu}{Sky Menu}}{}
+    {Rust, Qt}
+    {Linux application launcher}
+    
+    \ProjectEntry{\href{https://github.com/tcheinen/transmogrify}{Transmogrify}}{}
+    {Rust}
+    {TUI Hex Editor optimized for binary patching functions}
+    
+    \ProjectEntry{\href{https://github.com/tcheinen/nand2tetris-hdl-visualizer}{Nand2Tetris HDL Visualizer}}{}
+    {Rust}
+    {Tool to visualize Nand2Tetris HDL files as a graph}
+    
+    \ProjectEntry{\href{https://github.com/tcheinen/ctf-writeups}{CTF Writeups}}{}
+    {\href{https://writeups.teddyheinen.com}{https://writeups.teddyheinen.com}}
+    {Collection of writeups for CTFs}
+    
+    \ProjectEntry{\href{https://gitlab.com/addison-and-teddy/schadenfreude/}{Schadenfreude}}{}
+    {Java}
+    {Ghidra plugin for automatic vulnerability discovery}
+}
+\vspace{-10mm}
+\SplitSegment
+{
+    \textcolor{highlight}{\NewPart{Activities \& Awards}{}}
+    \AwardEntry{DARPA FETT Bug Bounty Competition, completed all challenges}{Summer 2020}{}{}
+    \AwardEntry{SMC3 CTF, 3rd place}{Summer 2020}{}{}
+    \AwardEntry{Dean's Honor Roll}{Spring 2019}{}{}
+    \AwardEntry{TAMU Vulnerability Research Club Presenter \\ }{\strut \hfill Spring 2021-Present}{}{}
+}
+{
+    \textcolor{highlight}{\NewPart{Skills}{}}
+    \SkillsEntry{Programming Languages}{Java, C++, Python, Rust, Kotlin, TypeScript}
+    \SkillsEntry{Cybersecurity}{Reverse Engineering, Binary Exploitation}
+    \SkillsEntry{Other}{x86 Assembly, Ghidra, Shell scripting, Docker, Linux, Git, Object Oriented Programming, LaTeX, GDB}
+}
+
+\end{document}
