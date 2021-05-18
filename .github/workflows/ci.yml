@@ -17,3 +17,9 @@ jobs:
         with:
             name: static
             path: resume.pdf
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: tcheinen/tcheinen.github.io
+          event-type: rebuild
