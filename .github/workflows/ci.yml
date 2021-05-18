@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            resume.tex
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: wheel
+            path: target/wheels
