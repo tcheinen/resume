@@ -14,6 +14,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{multicol}
 \usepackage{fontawesome}
+\usepackage{tikz}
 
 \makeatletter
 \def\url@modernstyle{
@@ -29,20 +30,6 @@
 \definecolor{foreground}{RGB}{51, 51, 51} % foreground is the primary text color.  Should be readable on the background
 
 \color{foreground}
-
-%%% Custom Sectioning (titlesec)
-% \usepackage{titlesec}
-% \titleformat{\section}{\Large\bfseries\sffamily}{}{0 em}
-%   {%
-%     \begingroup
-%       \color{highlight}%
-%       \titleline{\leaders\hrule height 2pt \hfill\kern 0 pt\relax}%
-%     \endgroup
-%     \nobreak
-%     \vspace{-1 em}%
-%     \nobreak
-%   }
-% \titlespacing\section{0pt}{0pt}{0pt}
 
 %%% Custom sectioning (sectsty package)
 %%% ------------------------------------------------------------
@@ -134,6 +121,13 @@
         \end{minipage}
     \end{multicols}
 }
+
+
+\newcommand{\cvtag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=highlight!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
+}
+
+
 \begin{document}
 
 
@@ -147,6 +141,11 @@
 
 \textcolor{highlight}{\NewPart{Experience}{}}
 \WorkEntry
+{Software Engineering Intern}
+{Summer 2021}
+{Arista Networks, Austin, TX}
+{Wrote C++ software to handle VXLAN packet encapsulation on simulated network. Implemented functionality to prevent crashing when under under spikes of heavy load}
+\WorkEntry
 {Full Stack Developer (Intern)}
 {Summer 2020}
 {40Geo, Houston, TX}
@@ -155,12 +154,12 @@
 {TAMUctf Developer}
 {Fall 2019 - Present}
 {Texas A\&M, College Station, TX}
-{Designing and creating challenges on various cybersecurity topics such as binary exploitation, reverse engineering, and web exploitation for our university CTF competition and the regional championships for SkillsUSA Cybersecurity}
+{Designing and creating challenges on various cybersecurity topics such as binary exploitation, reverse engineering, and web exploitation for our university CTF competition which generally averages 500+ teams competing.  Have been contracted to create CTFs for other organizations such as SkillsUSA TX and BSides Edmonton}
 \WorkEntry
 {Teaching Assistant}
 {Fall 2019 - Present}
 {Texas A\&M, College Station, TX}
-{Lead CS labs, grade assignments (developed software to automate grading), assist with homework and exam design, and maintain office hours}
+{Lead CS labs (Data Structures and Algorithms, Computer Organization, Introductory Operating Systems), grade assignments (developed software to automate grading), assist with homework and exam design, and maintain office hours}
 \WorkEntry
 {Software Engineering Intern}
 { Summer 2018 \& 2019}
@@ -168,9 +167,7 @@
 {Worked on frontend with Angular/Typescript, backend with Java EE and containerized software allowing developers to test locally}
 
 
-
-%%% Education
-%%% ------------------------------------------------------------
+\vspace{-5mm}
 \textcolor{highlight}{\NewPart{Education}{}}
 \EducationEntry
 {Bachelor of Science - Computer Science}
@@ -197,7 +194,7 @@
     {CTF Lead}
     {May 2020 - Present}
     {TAMU Cybersecurity Club}
-    {}
+    {Lead the CTF team "ret2rev", composed of Texas A\&M students. Design and give presentations on topics such as CTF, Linux, and Binary Exploitation to students. Helped design and run a CTF aimed at entry-level students with over 150 competitors. }
 }
 {
     \textcolor{highlight}{\NewPart{Projects}{}}
@@ -213,11 +210,11 @@
     {Rust}
     {TUI Hex Editor optimized for binary patching functions}
     
-    \ProjectEntry{\href{https://github.com/tcheinen/nand2tetris-hdl-visualizer}{Nand2Tetris HDL Visualizer}}{}
+    \ProjectEntry{\href{https://github.com/tcheinen/discord-typed-interactions}{Discord Typed Interactions}}{}
     {Rust}
-    {Tool to visualize Nand2Tetris HDL files as a graph}
+    {Code generation utility for the chat application Discord's interaction API which generates static types}
     
-    \ProjectEntry{\href{https://github.com/tcheinen/tcheinen.github.io}{CTF Writeups}}{}
+    \ProjectEntry{\href{https://github.com/tcheinen/ctf-writeups}{CTF Writeups}}{}
     {\href{https://heinen.dev}{https://heinen.dev}}
     {Collection of writeups for CTFs}
     
@@ -225,7 +222,7 @@
     {Java}
     {Ghidra plugin for automatic vulnerability discovery}
 }
-\vspace{-10mm}
+\vspace{-15mm}
 \SplitSegment
 {
     \textcolor{highlight}{\NewPart{Activities \& Awards}{}}
@@ -236,9 +233,9 @@
 }
 {
     \textcolor{highlight}{\NewPart{Skills}{}}
-    \SkillsEntry{Programming Languages}{Java, C++, Python, Rust, Kotlin, TypeScript}
-    \SkillsEntry{Cybersecurity}{Reverse Engineering, Binary Exploitation}
-    \SkillsEntry{Other}{x86 Assembly, Ghidra, Shell scripting, Docker, Linux, Git, Object Oriented Programming, LaTeX, GDB}
+    \SkillsEntry{Programming Languages}{\cvtag{C++}\cvtag{Java}\cvtag{Python}\cvtag{Rust}\cvtag{SQL}}
+    \SkillsEntry{Cybersecurity}{\cvtag{Reverse Engineering}\cvtag{Binary Exploitation}}
+    \SkillsEntry{Other}{\cvtag{x86 Assembly}\cvtag{Ghidra}\cvtag{Shell scripting}\cvtag{Docker}\cvtag{Linux}\cvtag{Git}\cvtag{Object Oriented Programming}\cvtag{LaTeX}\cvtag{GDB}}
 }
 
 \end{document}
